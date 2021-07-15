@@ -15,9 +15,21 @@ class _Persistent {
     this.prefs = await SharedPreferences.getInstance();
   }
 
-  List<String> get ids => this.prefs.getString(_Keys.ids.toString())?.split("\n") ?? [];
-  Future<void> setIds(List<String> ids) async {
+  _setIds(List<String> ids) async {
     await this.prefs.setString(_Keys.ids.toString(), ids.join("\n"));
+  }
+  List<String> get ids => Set<String>.from(
+    prefs.getString(_Keys.ids.toString())?.split("\n") ?? []
+  ).where((element) => element.isNotEmpty).toList();
+
+  Future<void> addID(String id) async {
+    final ids = this.ids..add(id);
+    this._setIds(ids.toList());
+  }
+
+  void removeID(String id) async {
+    final ids = this.ids..remove(id);
+    await this._setIds(ids.toList());
   }
 }
 

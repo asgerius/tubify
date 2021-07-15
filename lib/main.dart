@@ -13,7 +13,6 @@ bool _isPhone() => MediaQueryData.fromWindow(WidgetsBinding.instance!.window).si
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await persistent.init();
-  await persistent.setIds(["dQw4w9WgXcQ", "o7cCJqya7wc", "tVj0ZTS4WF4"]);
   runApp(MyApp());
 }
 
@@ -40,7 +39,7 @@ class MyApp extends StatelessWidget {
       showSemanticsDebugger: false,
       home: PlayerScreen(),
       onGenerateRoute: (RouteSettings settings) {
-        final Map<String, dynamic>? args = settings.arguments as Map<String, dynamic>?;
+        final Map<String, dynamic> args = settings.arguments as Map<String, dynamic>;
         switch (settings.name) {
           case PlayerScreen.routeName:
             return swipeTransition(PlayerScreen());

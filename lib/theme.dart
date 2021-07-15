@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const _textColour = Color(0xFFEEEEEE);
 
-const TextTheme _textTheme = TextTheme(
+const TextTheme textTheme = TextTheme(
   headline1: TextStyle(color: _textColour, fontSize: 28, fontWeight: FontWeight.bold),
   headline2: TextStyle(color: _textColour, fontSize: 26, fontWeight: FontWeight.bold),
   headline3: TextStyle(color: _textColour, fontSize: 24, fontWeight: FontWeight.bold),
@@ -19,5 +19,6 @@ ThemeData themeData() => ThemeData(
   backgroundColor: Colors.black,
   scaffoldBackgroundColor: Colors.black,
   brightness: Brightness.dark,
-  textTheme: _textTheme,
+  textTheme: textTheme,
+  dialogBackgroundColor: Colors.black,
 );
